@@ -1,1 +1,11 @@
-@import '../../node_modules/bootstrap/scss/';
+$primary: rgb(34, 237, 112);
+$secondary: rgb(0, 124, 146);
+$tertiary: 31, 31, 31;
+$bg: 204, 255, 249;
+:root{
+	--bs-tertiary: rgb(#{$tertiary});
+	--bs-tertiary-rgb: #{$tertiary};
+    --bs-bg: rgb(#{$tertiary});
+	--bs-bg-rgb: #{$tertiary};
+}
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
