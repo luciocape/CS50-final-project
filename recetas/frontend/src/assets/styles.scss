@@ -5,7 +5,19 @@ $bg: 204, 255, 249;
 :root{
 	--bs-tertiary: rgb(#{$tertiary});
 	--bs-tertiary-rgb: #{$tertiary};
-    --bs-bg: rgb(#{$tertiary});
-	--bs-bg-rgb: #{$tertiary};
+    --bs-bg: rgb(#{$bg});
+	--bs-bg-rgb: #{$bg};
 }
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+nav{
+	&.nav-header{
+		background-color: var(--bs-bg);
+	}
+}
+ul, ol{
+	padding: 0;
+}
+.nav-link{
+	cursor: pointer;
+}

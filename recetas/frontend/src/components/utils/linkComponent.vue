@@ -1,6 +1,6 @@
 <template>
-	<RouterLink v-if="props.isView === true" :to="props.url" :class="props.type === 'login' ? 'btn-primary' + className : props.type === 'register' ? 'btn-outline-primary' + className : className">{{ text }}</RouterLink>
-    <a v-else :href="props.url" :class="props.className">{{ props.type }}</a>
+	<RouterLink v-if="props.isView === true" :to="props.url" :class="props.className">{{ text }}</RouterLink>
+    <a v-else :href="props.url" :class="props.className" >{{ props.type }}</a>
 </template>
 
 <script setup>
@@ -10,34 +10,28 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
-	color: {
-		type: String,
-		default: "#2482D9"
-	},
     type:{
         type: String,
         default: 'login'
     },
     className:{
         type: String,
-        default: 'btn px-4 py-1 rounded-pill fw-medium'
     },
     isView:{
         type: Boolean,
         default: false
     }
 });
-const text = props.type === 'login' ? 'Log in' : 'Register';
+const text = props.type === 'login' ? 'Log in' : props.type === 'register' ? 'Register' : props.type;
 </script>
 
 <style scoped lang="scss">
-a{
-	width: fit-content;
-    background-color: #5A45A6;
-    border: 2px solid #5A45A6;
-    color: #efdfff;
-    &.register{
-        background-color: rgba(90, 69, 166, 0.6);
+@import "../../assets/styles.scss";
+.register{
+    background-color: rgba(var(--bs-primary-rgb), 0.25)!important;
+    transition: 0.2s;
+    &:hover{
+        background-color: $primary!important;
     }
 }
 </style>

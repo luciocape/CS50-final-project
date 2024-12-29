@@ -1,10 +1,16 @@
+<template>
+</template>
+
 <script setup>
+//import { ref } from 'vue';
+
+name: 'Register'
+
+//const props = defineProps({});
+//const emits = defineEmits([]);
 
 </script>
 
-<template>
-
-</template>
-
 <style scoped lang="scss">
+@import "../assets/styles.scss";
 </style>

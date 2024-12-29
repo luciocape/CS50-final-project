@@ -4,7 +4,7 @@
 <script setup>
 //import { ref } from 'vue';
 
-name: 'Home'
+name: 'Hero'
 
 //const props = defineProps({});
 //const emits = defineEmits([]);
@@ -12,5 +12,5 @@ name: 'Home'
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles.scss";
+@import "../../assets/styles.scss";
 </style>
