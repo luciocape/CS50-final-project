@@ -4,7 +4,7 @@
 <script setup>
 //import { ref } from 'vue';
 
-name: 'recipe'
+name: 'recipeCards'
 
 //const props = defineProps({});
 //const emits = defineEmits([]);
@@ -12,5 +12,5 @@ name: 'recipe'
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles.scss";
+@import "../../assets/styles.scss";
 </style>
