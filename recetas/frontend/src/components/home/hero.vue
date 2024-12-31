@@ -1,7 +1,7 @@
 <template>
-    <section class="hero">
-        <h1>World recipes</h1>
-        <div class="w-75">
+    <section class="hero p-4 ">
+        <h1 class="text-center mb-4 text-secondary">World recipes</h1>
+        <div class="m-auto m-0 container">
             <TypeInput input-type="search" name="inputSearch"/>
             <Filters/>
         </div>
@@ -23,4 +23,7 @@ name: 'Hero'
 
 <style scoped lang="scss">
 @import "../../assets/styles.scss";
+.hero{
+    background: linear-gradient(0deg, white 0%, rgba(var(--bs-primary-rgb), 0.35) 100%);
+}
 </style>

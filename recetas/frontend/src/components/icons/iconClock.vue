@@ -41,8 +41,8 @@
 			ry="1.289"
 			transform="rotate(149.979 48.621 17.741)"
 		/>
-		<ellipse cx="12.808" cy="27.336" fill="#000000" rx="1.308" ry="1.289" />
-		<ellipse cx="51.191" cy="27.336" fill="#000000" rx="1.309" ry="1.289" />
+		<ellipse cx="12.808" cy="27.336" :fill="props.color" rx="1.308" ry="1.289" />
+		<ellipse cx="51.191" cy="27.336" :fill="props.color" rx="1.309" ry="1.289" />
 		<ellipse
 			cx="15.379"
 			cy="17.739"
@@ -71,8 +71,8 @@
 			:fill="props.color"
 			d="M40.941 42.822a1.3 1.3 0 0 0-.463 1.779a1.297 1.297 0 0 0 1.771.486c.615-.354.824-1.15.461-1.775a1.3 1.3 0 0 0-1.769-.49"
 		/>
-		<ellipse cx="32" cy="8.145" fill="#000000" rx="1.289" ry="1.309" />
-		<ellipse cx="32" cy="46.527" fill="#000000" rx="1.289" ry="1.309" />
+		<ellipse cx="32" cy="8.145" :fill="props.color" rx="1.289" ry="1.309" />
+		<ellipse cx="32" cy="46.527" :fill="props.color" rx="1.289" ry="1.309" />
 		<path
 			:fill="props.color"
 			d="M33.484 11.411c7.32.743 13.033 6.926 13.033 14.442c0 8.018-6.5 14.518-14.519 14.518s-14.518-6.5-14.518-14.518c0-7.517 5.712-13.699 13.032-14.442C22.375 12.161 16 19.001 16 27.336c0 8.836 7.162 16 15.999 16S48 36.172 48 27.336c0-8.335-6.376-15.175-14.516-15.925"
@@ -103,5 +103,5 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles.scss";
+@import "../../assets/styles.scss";
 </style>

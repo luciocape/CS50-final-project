@@ -98,6 +98,7 @@ footer{
     background: linear-gradient(180deg, $secondary 30%, $primary 100%);
     h2{
         color: var(--bs-bg)!important;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
     }
     .nav-link{
         font-size: 1.2rem;

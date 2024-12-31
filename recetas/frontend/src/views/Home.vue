@@ -1,11 +1,14 @@
 <template>
     <main>
         <Hero/>
+        <RecipeCards/>
     </main>
 </template>
 
 <script setup>
+import RecipeCards from '../components/ui/recipeCard.vue';
 import Hero from '../components/home/hero.vue';
+import Recipe from './Recipe.vue';
 
 //import { ref } from 'vue';
 

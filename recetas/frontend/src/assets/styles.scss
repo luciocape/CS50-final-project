@@ -10,13 +10,24 @@ $bg: 204, 255, 249;
 }
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Cookie', cursive;
+}
+h1{
+	font-size: 3.5rem;
+	line-height: 80%;
+}
 nav{
 	&.nav-header{
 		background-color: var(--bs-bg);
 	}
 }
+section{
+	min-height: 40vh;
+}
 ul, ol{
 	padding: 0;
+	list-style: none;
 }
 .nav-link{
 	cursor: pointer;
