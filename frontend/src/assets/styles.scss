@@ -1,0 +1,44 @@
+$primary: rgb(34, 237, 112);
+$secondary: rgb(0, 124, 146);
+$tertiary: 31, 31, 31;
+$bg: 204, 255, 249;
+:root{
+	--bs-tertiary: rgb(#{$tertiary});
+	--bs-tertiary-rgb: #{$tertiary};
+    --bs-bg: rgb(#{$bg});
+	--bs-bg-rgb: #{$bg};
+}
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Cookie', cursive;
+}
+h1{
+	font-size: 3.8rem;
+	line-height: 80%;
+}
+h2{
+	font-size: 2.8rem;
+	line-height: 80%;
+}
+main{
+	width: 100%;
+	min-height: 100vh;
+}
+nav{
+	&.nav-header{
+		background-color: var(--bs-bg);
+		z-index: 800;
+	}
+}
+section{
+	min-height: 40vh;
+	margin-bottom: 10vh;
+}
+ul, ol{
+	padding: 0;
+	list-style: none;
+}
+.nav-link{
+	cursor: pointer;
+}
