@@ -1,20 +1,11 @@
 <template>
 	<main class="d-flex justify-content-center">
-		<form class="contenedor-login">
-			<div class="d-flex flex-column gap-3 mb-2">
-				<FormInput v-for="item in inputs" :key="item.id"
-					:input-type="item.inputType"
-					:name="item.inputName"
-					:label="item.label"
-					:label-align="item.labelAlign"
-				/>
-			</div>
-			<FormInput input-type="submit" value="Login"/>
-		</form>
+		<AccountForm :inputs="inputs"/>
 	</main>
 </template>
 
 <script setup>
+import AccountForm from "../components/ui/accountForm.vue";
 import FormInput from "../components/utils/formInput.vue";
 
 //import { ref } from 'vue';
@@ -29,24 +20,22 @@ const inputs = [
 		inputType: "text",
 		inputName: "username",
 		label: "Username",
-		labelAlign: "center",
-        id: 0
+		labelAlign: "start",
+		id: 0,
 	},
-    {
+	{
 		inputType: "password",
 		inputName: "password",
 		label: "Password",
-		labelAlign: "center",
-        id: 1
+		labelAlign: "start",
+		id: 1,
 	},
 ];
 </script>
 
 <style scoped lang="scss">
 @import "../assets/styles.scss";
-.contenedor-login {
-    margin-top: 15vh;
-    width: 32vw;
-	min-width: 280px;
+main {
+	background: radial-gradient(circle, rgb(var(--bs-bg-rgb)) 0%, rgba(var(--bs-primary-rgb)) 100%);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="w-100 d-flex flex-column gap-2" :class="`text-${props.labelAlign}`">
         <label v-if="props.inputType != 'submit'" :for="props.name" class="fw-medium lead">{{ props.label }}</label>
-        <TypeInput :name="props.name" :input-type="props.inputType" :value="props.value"/>
+        <TypeInput :name="props.name" :input-type="props.inputType" :value="props.value" :input-class="inputClass"/>
     </div>
 </template>
 
@@ -25,6 +25,10 @@ const props = defineProps({
     labelAlign:{
         type: String,
         default: 'center'
+    },
+    inputClass: {
+        type: String,
+        default: ''
     },
     value: {
         type: String

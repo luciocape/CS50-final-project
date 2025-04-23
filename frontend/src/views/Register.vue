@@ -1,22 +1,11 @@
 <template>
 	<main class="d-flex justify-content-center">
-		<form class="contenedor-register">
-			<div class="d-flex flex-column gap-3 mb-2">
-				<FormInput
-					v-for="item in inputs"
-					:key="item.id"
-					:input-type="item.inputType"
-					:name="item.inputName"
-					:label="item.label"
-					:label-align="item.labelAlign"
-				/>
-			</div>
-			<FormInput input-type="submit" value="Register"/>
-		</form>
+		<AccountForm :inputs="inputs" form_title="Register"/>
 	</main>
 </template>
 
 <script setup>
+import AccountForm from '../components/ui/accountForm.vue';
 import FormInput from '../components/utils/formInput.vue';
 
 //import { ref } from 'vue';
@@ -30,21 +19,21 @@ const inputs = [
 		inputType: "text",
 		inputName: "username",
 		label: "Username",
-		labelAlign: "center",
+		labelAlign: "start",
         id: 0
 	},
     {
 		inputType: "password",
 		inputName: "password",
 		label: "Password",
-		labelAlign: "center",
+		labelAlign: "start",
         id: 1
 	},
     {
 		inputType: "password",
 		inputName: "confirm_password",
 		label: "Confirm password",
-		labelAlign: "center",
+		labelAlign: "start",
         id: 2
 	},
 ];
@@ -52,9 +41,8 @@ const inputs = [
 
 <style scoped lang="scss">
 @import "../assets/styles.scss";
-.contenedor-register {
-    margin-top: 15vh;
-    width: 32vw;
-	min-width: 280px;
+main {
+	background: radial-gradient(circle, rgb(var(--bs-bg-rgb)) 0%, rgba(var(--bs-primary-rgb)) 100%);
 }
+
 </style>
