@@ -42,7 +42,7 @@ const inputs = [
 <style scoped lang="scss">
 @import "../assets/styles.scss";
 main {
-	background: radial-gradient(circle, rgb(var(--bs-bg-rgb)) 0%, rgba(var(--bs-primary-rgb)) 100%);
+	background: radial-gradient(circle, rgb(var(--bs-bg-rgb)) 5%, rgba(var(--bs-primary-rgb)) 100%);
 }
 
 </style>

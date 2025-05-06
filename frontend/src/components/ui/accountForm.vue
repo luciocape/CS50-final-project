@@ -1,7 +1,7 @@
 <template>
-	<form class="contenedor-login p-4 rounded-4">
-		<h1 class="mb-4 text-center">{{ form_title }}</h1>
-		<div class="d-flex flex-column gap-3 mb-2">
+	<form class="contenedor-login p-4 rounded-4 m-0 m-auto">
+		<h1 class="mb-3 text-center">{{ form_title }}</h1>
+		<div class="d-flex flex-column gap-2 mb-2">
 			<FormInput
 				v-for="item in inputs"
 				:key="item.id"
@@ -22,14 +22,14 @@ import FormInput from "../utils/formInput.vue";
 name: "accountForm";
 
 const props = defineProps({
-    inputs: {
-        type: Array,
-        required: true,
-    },
-    form_title: {
-        type: String,
-        default: "Login",
-    },
+	inputs: {
+		type: Array,
+		required: true,
+	},
+	form_title: {
+		type: String,
+		default: "Login",
+	},
 });
 //const emits = defineEmits([]);
 </script>
@@ -37,12 +37,24 @@ const props = defineProps({
 <style scoped lang="scss">
 @import "../../assets/styles.scss";
 .contenedor-login {
-		margin-top: 15vh;
-		width: 32vw;
-		min-width: 280px;
-		max-height: 70vh;
-		background-color: rgba(62, 248, 124, 0.486);
-		backdrop-filter: blur(25px);
-		box-shadow: 0 0 15px rgba(200, 255, 217, 0.7);
+	width: 34vw;
+	min-width: 300px;
+	min-height: 70vh;
+	background-color: rgba(62, 248, 124, 0.486);
+	backdrop-filter: blur(25px);
+	box-shadow: 0 0 15px rgba(200, 255, 217, 0.7);
+}
+@media screen and ( 768px < width < 992px ) {
+	.contenedor-login {
+		width: 47vw;
 	}
+	
+}
+@media screen and ( width < 768px ) {
+	.contenedor-login {
+		width: 65vw;
+		min-height: 60vh;
+	}
+	
+}
 </style>

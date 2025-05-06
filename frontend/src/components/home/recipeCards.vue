@@ -1,5 +1,5 @@
 <template>
-	<section class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
+	<section class="d-flex justify-content-center align-items-center gap-5 gap-md-3 gap-lg-5 flex-wrap px-1">
 		<RecipeCard
 			v-for="card in cards"
 			:key="card.id"
