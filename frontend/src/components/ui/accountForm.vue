@@ -1,5 +1,5 @@
 <template>
-	<form class="contenedor-login p-4 rounded-4 m-0 m-auto">
+	<form class="contenedor-login p-4 rounded-4 m-0 m-auto border border-2 border-primary">
 		<h1 class="mb-3 text-center">{{ form_title }}</h1>
 		<div class="d-flex flex-column gap-2 mb-2">
 			<FormInput
