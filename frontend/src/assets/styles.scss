@@ -26,15 +26,17 @@ main{
 	min-height: 100vh;
 	padding-bottom: 70px;
 }
-nav{
-	&.nav-header{
-		background-color: var(--bs-bg);
-		z-index: 800;
+header{
+	nav{
+		&.nav-header{
+			background-color: var(--bs-bg);
+			z-index: 800;
+		}
 	}
 }
 section{
-	min-height: 40vh;
-	margin-bottom: 10vh;
+	min-height: 140px;
+	margin-bottom: 70px;
 }
 ul, ol{
 	padding: 0;

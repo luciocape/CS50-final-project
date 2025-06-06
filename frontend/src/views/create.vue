@@ -3,7 +3,7 @@
         <form class=" d-flex flex-column create-form p-3 border border-5 border-primary m-0 m-auto rounded-4" action="">
             <div class="form-inputs w-100 d-flex flex-column align-items-center justify-content-start gap-2">
                 <div v-show="step === 0" class="w-100 pb-2" :class="input.id !== 3 ? ' border-bottom border-2 border-secondary line-shadow' : ''" v-for="input in descriptionInputs" :key="input.id">
-                    <FormInput :label="input.label" label-align="start" :input-type="input.type"></FormInput>
+                    <FormInput :label="input.label" label-align="start" :input-type="input.type" :placeholder="input.placeholder"></FormInput>
                 </div>
                 <div class="w-100" v-show="steps === step" v-for="steps in step">
                     <h2 class="text-center text-secondary h1">Step {{ steps }}</h2>
@@ -86,7 +86,8 @@ const stepsInputs = [
 main{
     background: radial-gradient(circle, rgba(var(--bs-primary-rgb)) 0%, rgb(var(--bs-bg-rgb)) 80%);
     .create-form {
-        max-width: 650px;
+        max-width: 670px;
+        margin-top: 5vh!important;
         width: 80%;
         min-width: 270px;
         min-height: 400px;

@@ -1,45 +1,49 @@
 <template>
-	<nav
-		class="nav-header navbar navbar-expand-lg navbar-white shadow position-sticky top-0 pe-3"
-		aria-label="Fourth navbar example"
-	>
-		<div class="container-fluid d-flex">
-			<a class="navbar-brand space-left m-0" href="/">
-				<Logo color="#5A45A6" size="md" class-name="py-2 px-3" />
-			</a>
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbarsExample04"
-				aria-controls="navbarsExample04"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-			>
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<header>
+		<nav
+			class="nav-header navbar navbar-expand-lg navbar-white shadow position-sticky top-0 pe-3"
+			aria-label="Fourth navbar example"
+		>
+			<div class="container-fluid d-flex">
+				<a class="navbar-brand space-left m-0" href="/">
+					<Logo color="#5A45A6" size="md" class-name="py-2 px-3" />
+				</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarsExample04"
+					aria-controls="navbarsExample04"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<div
-				class="collapse navbar-collapse justify-content-end align-items-center gap-3"
-				id="navbarsExample04"
-			>
-				<ul class="navbar-nav mb-2 mb-md-0 gap-3 align-items-center">
-					<li
-						v-for="link in nav"
-						:key="link.id"
-						class="nav-item fw-medium"
+				<div
+					class="collapse navbar-collapse justify-content-end align-items-center gap-3"
+					id="navbarsExample04"
+				>
+					<ul
+						class="navbar-nav mb-2 mb-md-0 gap-3 align-items-center"
 					>
-						<linkComponent
-							:type="link.name"
-							:class-name="link.className"
-							:url="link.url"
-							:is-view="link.isView"
-						/>
-					</li>
-				</ul>
+						<li
+							v-for="link in nav"
+							:key="link.id"
+							class="nav-item fw-medium"
+						>
+							<linkComponent
+								:type="link.name"
+								:class-name="link.className"
+								:url="link.url"
+								:is-view="link.isView"
+							/>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</header>
 </template>
 <script setup>
 import Logo from "./utils/logo.vue";
@@ -53,6 +57,20 @@ const nav = [
 		isView: true,
 		className: "nav-link active",
 		id: 0,
+	},
+	{
+		name: "Saved recipes",
+		url: "/saved",
+		isView: true,
+		className: "nav-link",
+		id: 1,
+	},
+	{
+		name: "Create",
+		url: "/create",
+		isView: true,
+		className: "nav-link",
+		id: 2,
 	},
 	{
 		name: "login",
@@ -72,7 +90,7 @@ const nav = [
 	},
 ];
 const logedNav = [
-{
+	{
 		name: "Search",
 		url: "/search",
 		isView: true,
@@ -109,7 +127,7 @@ const logedNav = [
 			"btn register text-secondary px-4 py-1 rounded-pill fw-medium border border-primary",
 		id: 4,
 	},
-]
+];
 </script>
 
 <style scoped lang="scss">

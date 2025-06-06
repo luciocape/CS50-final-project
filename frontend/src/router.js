@@ -19,9 +19,15 @@ const routes = [
         // meta: { analytics: true }
     },
     {
+        path: '/comprar', // la ruta base
+        name: 'Comprar', // el nombre de la ruta
+        component: () => import('./views/Buy.vue') // el componente que se renderiza
+        // meta: { analytics: true }
+    },
+    {
         path: '/create', // la ruta base
         name: 'Create', // el nombre de la ruta
-        component: () => import('./views/create.vue') // el componente que se renderiza
+        component: () => import('./views/Create.vue') // el componente que se renderiza
         // meta: { analytics: true }
     },
     {
