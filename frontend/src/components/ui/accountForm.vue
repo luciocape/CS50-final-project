@@ -1,5 +1,5 @@
 <template>
-	<form class="contenedor-login p-4 rounded-4 m-0 m-auto border border-2 border-primary">
+	<form class="contenedor-login p-4 pb-5 rounded-4 m-0 m-auto border border-2 border-primary">
 		<h1 class="mb-3 text-center">{{ form_title }}</h1>
 		<div class="d-flex flex-column gap-2 mb-2">
 			<FormInput
@@ -39,7 +39,8 @@ const props = defineProps({
 .contenedor-login {
 	width: 34vw;
 	min-width: 300px;
-	min-height: 70vh;
+	min-height: 400px;
+	max-height: max-content;
 	background-color: rgba(62, 248, 124, 0.486);
 	backdrop-filter: blur(25px);
 	box-shadow: 0 0 15px rgba(200, 255, 217, 0.7);
@@ -53,7 +54,6 @@ const props = defineProps({
 @media screen and ( width < 768px ) {
 	.contenedor-login {
 		width: 65vw;
-		min-height: 60vh;
 	}
 	
 }
