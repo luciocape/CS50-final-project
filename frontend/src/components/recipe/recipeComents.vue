@@ -1,7 +1,7 @@
 <template>
 	<section>
         <h2 class="mb-4">Comments</h2>
-		<div class="mb-5">
+		<div class="mb-5" v-if="allowComment">
 			<div class="d-flex gap-2 mb-2 align-items-center">
 				<IconProfile size="45px" />Tu
 			</div>
@@ -46,7 +46,12 @@ import TypeInput from "../utils/typeInput.vue";
 
 name: "recipeComents";
 
-//const props = defineProps({});
+const props = defineProps({
+	allowComment: {
+		type: Boolean,
+		default: true,
+	},
+});
 //const emits = defineEmits([]);
 </script>
 
