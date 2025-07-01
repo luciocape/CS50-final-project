@@ -31,10 +31,10 @@ name: 'moreRecipes'
     }
 }
 .recipe-cards{
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    // scrollbar-width: none;
+    // -ms-overflow-style: none;
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
 }
 </style>

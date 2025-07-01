@@ -11,7 +11,7 @@
 					<IconStar color="#007C92" :filled="star - 1 < 4" />
 				</li>
 			</ul> -->
-			<Stars :stars="4" class="stars" />
+			<Stars :shadowed="true" :stars="4" class="stars" />
 			<span class="fw-bold price pe-2 price">Price</span>
 		</div>
 		<div class="card-body d-flex flex-column gap-2 pb-0">
@@ -63,7 +63,6 @@ const props = defineProps({
 		type: Array,
 	},
 });
-console.log("title:" + props.title);
 //const emits = defineEmits([]);
 </script>
 
@@ -89,9 +88,6 @@ console.log("title:" + props.title);
 			font-size: 1.2rem;
 			color: var(--bs-bg);
 			text-shadow: 0 2px 3px rgba(var(--bs-secondary-rgb), 0.7);
-		}
-		.stars {
-			filter: drop-shadow(0 2px 3px var(--bs-secondary));
 		}
 	}
 }
