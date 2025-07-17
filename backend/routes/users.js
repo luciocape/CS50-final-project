@@ -1,31 +1,31 @@
 const express = require("express");
 const router = express.Router();
 
-app.get("/user/:user_id", (req, res) => {
+router.get("/user/:user_id", (req, res) => {
     //return recipes, profile picture, stars
 });
 
-app.get("/user", (req, res) => {
+router.get("/user", (req, res) => {
     //return user_id, username, profile picture, stars
 });
 
-app.get("/points", (req, res) => {
+router.get("/points", (req, res) => {
     
 });
 
-app.post("/profile-picture/", (req, res) => {
+router.post("/profile-picture/", (req, res) => {
     
 });
 
-app.post("/bought-recipes/", (req, res) => {
+router.post("/bought-recipes/", (req, res) => {
     
 });
 
-app.get("/saved-recipes/", (req, res) => {
+router.get("/saved-recipes/", (req, res) => {
     
 });
 
-app.post("/saved-recipes/", (req, res) => {
+router.post("/saved-recipes/", (req, res) => {
     
 });
 
