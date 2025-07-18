@@ -22,6 +22,23 @@ const recipesModel = {
 			}
 		});
 	},
+	createStepsTable: () => {
+		const creation = `
+        CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+		description TEXT NOT NULL,
+		photo BLOB
+		recipe_id INTEGER FOREING KEY
+        )`;
+		db.run(creation, (error) => {
+			if (error) {
+				console.error(
+					"Error while creating saved recipes table",
+					error
+				);
+			}
+		});
+	},
 	addRecipe: (name, password) => {
 		const insertion = `INSERT INTO recipes (name, password) VALUES (?, ?)`;
 		db.run(insertion, [name, password], function (error) {

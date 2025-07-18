@@ -5,8 +5,6 @@ const recipeRoutes = require("./routes/recipes");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const db = require("./db/connect");
-const usersModel = require("./models/usersModel");
-const recipesModel = require("./models/recipesModel");
 function start() {
 	const app = express();
 	app.use(express.urlencoded({ extended: false }));
@@ -26,12 +24,9 @@ function start() {
 		res.send("Hello, world!");
 	});
 
-	// app.use("/api/user", userRoutes);
-	// app.use("/api/auth", authRoutes);
-	// app.use("/api/recipes", recipeRoutes);
-
-	usersModel.createTable();
-	recipesModel.createTable();
+	app.use("/api/user", userRoutes);
+	app.use("/api/auth", authRoutes);
+	app.use("/api/recipes", recipeRoutes);
 
 	db.close((error) => {
 		if (error) {
