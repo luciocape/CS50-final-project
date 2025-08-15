@@ -24,7 +24,7 @@ const recipesModel = {
 	},
 	createStepsTable: () => {
 		const creation = `
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS recipe_steps (
         id INTEGER PRIMARY KEY,
 		description TEXT NOT NULL,
 		photo BLOB
@@ -33,7 +33,7 @@ const recipesModel = {
 		db.run(creation, (error) => {
 			if (error) {
 				console.error(
-					"Error while creating saved recipes table",
+					"Error while creating recipe_steps table",
 					error
 				);
 			}
@@ -70,7 +70,7 @@ const recipesModel = {
 			}
 		});
 	},
-	// updateUser
+	
 };
 
 module.exports = recipesModel;

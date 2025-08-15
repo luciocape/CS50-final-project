@@ -26,7 +26,7 @@ const usersModel = {
 		db.run(creation, (error) => {
 			if (error) {
 				console.error(
-					"Error while creating saved recipes table",
+					"Error while creating saved_recipes table",
 					error
 				);
 			}
@@ -41,7 +41,7 @@ const usersModel = {
 		db.run(creation, (error) => {
 			if (error) {
 				console.error(
-					"Error while creating bought recipes table",
+					"Error while creating bought_recipes table",
 					error
 				);
 			}
