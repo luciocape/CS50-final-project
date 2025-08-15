@@ -1,7 +1,7 @@
 <template>
-	<header>
+	<header class="position-sticky top-0">
 		<nav
-			class="nav-header navbar navbar-expand-lg navbar-white shadow position-sticky top-0 pe-3"
+			class="nav-header navbar navbar-expand-lg navbar-white shadow pe-3"
 			aria-label="Fourth navbar example"
 		>
 			<div class="container-fluid d-flex">
@@ -132,4 +132,7 @@ const logedNav = [
 
 <style scoped lang="scss">
 @import "../assets/styles.scss";
+header{
+	z-index: 999;
+}
 </style>

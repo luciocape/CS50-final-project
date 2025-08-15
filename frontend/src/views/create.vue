@@ -92,7 +92,7 @@ main{
         min-width: 270px;
         min-height: 400px;
         background:  linear-gradient(130deg, $primary 0%, var(--bs-bg) 100%);
-        box-shadow: 0 0 10px 0 $primary;
+        box-shadow: 18px 14px 20px -15px rgb(36, 97, 38);
         .form-inputs{
             min-height: 295px;
             .line-shadow{

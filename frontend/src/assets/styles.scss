@@ -32,6 +32,8 @@ main{
 header{
 	nav{
 		&.nav-header{
+			position: sticky;
+			top: 0;
 			background-color: var(--bs-bg);
 			z-index: 800;
 		}
