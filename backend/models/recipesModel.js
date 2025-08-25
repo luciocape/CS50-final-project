@@ -1,7 +1,7 @@
 const db = require("../db/connect");
 
 const recipesModel = {
-	createTable: () => {
+	createRecipesTable: () => {
 		const query = `
         CREATE TABLE IF NOT EXISTS recipes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,18 +27,23 @@ const recipesModel = {
         CREATE TABLE IF NOT EXISTS recipe_steps (
         id INTEGER PRIMARY KEY,
 		description TEXT NOT NULL,
-		photo BLOB
+		photo BLOB,
 		recipe_id INTEGER FOREING KEY
-        )`;
+        );`;
 		db.run(creation, (error) => {
 			if (error) {
-				console.error(
-					"Error while creating recipe_steps table",
-					error
-				);
+				console.error("Error while creating recipe_steps table", error);
 			}
 		});
 	},
+	// dropTable: () => {
+	// 	const dropTable = `DROP TABLE recipe_steps;`;
+	// 	db.run(dropTable, (error) => {
+	// 		if (error) {
+	// 			console.error("Error while deleting a table", error)
+	// 		}
+	// 	})
+	// },
 	addRecipe: (name, password) => {
 		const insertion = `INSERT INTO recipes (name, password) VALUES (?, ?)`;
 		db.run(insertion, [name, password], function (error) {
@@ -70,7 +75,6 @@ const recipesModel = {
 			}
 		});
 	},
-	
 };
 
 module.exports = recipesModel;

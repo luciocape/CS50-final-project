@@ -5,6 +5,7 @@ const recipeRoutes = require("./routes/recipes");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const db = require("./db/connect");
+const createTables = require("./helpers/createTables");
 function start() {
 	const app = express();
 	app.use(express.urlencoded({ extended: false }));

@@ -1,7 +1,7 @@
 const db = require("../db/connect");
 
 const usersModel = {
-	createTable: () => {
+	createUsersTable: () => {
 		const creation = `
         CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,17 +41,33 @@ const usersModel = {
 		db.run(creation, (error) => {
 			if (error) {
 				console.error(
-					"Error while creating bought_recipes table",
-					error
+					"Error while creating bought_recipes table:",
+					error.message
 				);
 			}
 		});
 	},
-	addUser: (name, password) => {
+	// dropTable: () => {
+	// 	const dropTable = `DROP TABLE recipe_steps;`;
+	// 	db.run(dropTable, (error) => {
+	// 		if (error) {
+	// 			console.error("Error while deleting a table", error)
+	// 		}
+	// 	})
+	// },
+	createUser: (name, password) => {
 		const insertion = `INSERT INTO users (name, password) VALUES (?, ?)`;
 		db.run(insertion, [name, password], function (error) {
 			if (error) {
 				console.error("Error while adding user:", error.message);
+			}
+		});
+	},
+	deleteUser: (name) => {
+		const deletion = `DELETE FROM users WHERE name = ?`;
+		db.run(deletion, name, (error) => {
+			if (error) {
+				console.error("Error while deleting an user:", error.message);
 			}
 		});
 	},
@@ -66,16 +82,22 @@ const usersModel = {
 		});
 	},
 	getUserByName: (name) => {
-		const query = `Select * FROM users WHERE name = ?`;
-		db.all(query, name, (error, rows) => {
-			if (error) {
-				console.error("Error while getting user:", error);
-			} else {
-				return rows;
-			}
+		return new Promise((resolve, reject) => {
+			const query = `Select * FROM users WHERE name = ?`;
+			db.all(query, name, (error, rows) => {
+				if (error) {
+					reject(error);
+				} else {
+					resolve(rows);
+				}
+			});
 		});
 	},
 	// updateUser
 };
+
+usersModel.createUsersTable();
+usersModel.createBoughtTable();
+usersModel.createSavedTable();
 
 module.exports = usersModel;
