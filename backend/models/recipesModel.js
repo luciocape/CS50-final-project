@@ -1,4 +1,4 @@
-const db = require("../db/connect");
+import db from "../db/connect.js";
 
 const recipesModel = {
 	createRecipesTable: () => {
@@ -35,7 +35,8 @@ const recipesModel = {
 				console.error("Error while creating recipe_steps table", error);
 			}
 		});
-	},
+	}, 
+
 	// dropTable: () => {
 	// 	const dropTable = `DROP TABLE recipe_steps;`;
 	// 	db.run(dropTable, (error) => {

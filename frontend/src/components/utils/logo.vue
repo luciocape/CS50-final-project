@@ -1,5 +1,5 @@
 <template>
-	<img src="../../../contenido/logo.png" alt="Logo Recetas" :class="props.className + ' ' + props.size"/>
+	<img src="../../../contenido/logo.png" alt="Logo Recetas" :class="'logo ' + props.className + ' ' + props.size"/>
 </template>
 
 <script setup>
@@ -21,6 +21,9 @@ const props = defineProps({
 
 <style scoped lang="scss">
 @import "../../assets/styles.scss";
+.logo{
+    filter:  drop-shadow(0 2px 1px rgba(0, 0, 0, 0.3));
+}
 .sm{
     width: 110px;
 }

@@ -1,43 +1,49 @@
-console.log("Iniciado");
-const express = require("express");
-const cors = require("cors");
-const recipeRoutes = require("./routes/recipes");
-const authRoutes = require("./routes/auth");
-const userRoutes = require("./routes/users");
-const db = require("./db/connect");
-const createTables = require("./helpers/createTables");
-function start() {
-	const app = express();
-	app.use(express.urlencoded({ extended: false }));
-	app.use(express.json());
+import express from "express";
+import cors from "cors";
 
-	const port = 3000;
+import { PORT } from "./config.js";
+import db from "./db/connect.js";
+// import createTables from "./helpers/createTables"
 
-	app.use(
-		cors({
-			origin: ["*"],
-			methods: ["POST", "GET", "DELETE"],
-			allowedHeaders: ["Content-Type", "Authorization"],
-			credentials: true,
-		})
-	);
-	app.get("/api", (req, res) => {
-		res.send("Hello, world!");
-	});
+// import recipeRoutes from "./routes/recipes"
+import authRoutes from "./routes/auth.js";
+// import userRoutes from "./routes/users"
 
-	app.use("/api/user", userRoutes);
-	app.use("/api/auth", authRoutes);
-	app.use("/api/recipes", recipeRoutes);
+console.log("Iniciando");
+const app = express();
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-	db.close((error) => {
-		if (error) {
-			console.error("Error while closing db connection:", error);
-		}
-	});
+app.use(
+	cors({
+		origin: ["http://localhost:5173"],
+		methods: ["POST", "GET", "DELETE", "PUT", "OPTIONS"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+		credentials: true,
+	})
+);
+app.get("/api", (req, res) => {
+	res.send("Hello, world!");
+});
 
-	app.listen(port, () => {
-		console.log(`Servidor escuchando en el puerto ${port}`);
-	});
-}
+// app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+// app.use("/api/recipes", recipeRoutes);
 
-start();
+// db.close((error) => {
+// 	if (error) {
+// 		console.error("Error while closing db connection:", error);
+// 	}
+// });
+
+//Done with AI
+const server = app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+
+process.on('SIGTERM', () => {
+    db.close((error) => {
+        if (error) console.error("Error closing db:", error);
+        server.close();
+    });
+});

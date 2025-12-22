@@ -1,5 +1,5 @@
-const usersModel = require("../models/usersModel");
-const recipesModel = require("../models/recipesModel");
+import usersModel from "../models/usersModel.js"
+import recipesModel from "../models/recipesModel.js"
 
 //users tables
 usersModel.createUsersTable();

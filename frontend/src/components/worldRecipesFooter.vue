@@ -1,9 +1,9 @@
 <template>
 	<footer class="d-flex flex-column justify-content-start align-items-center gap-3 px-3 py-5">
-		<Logo size="lg" class-name="py-3 px-4" />
+		<Logo size="lg" class-name="py-3 px-4 text" class="logo"/>
 		<nav class="d-flex justify-content-evenly w-100 text-center flex-wrap gap-3">
 			<div v-for="section in footerNav" :key="section.id" class="">
-				<h2 class="h3">{{ section.h2 }}</h2>
+				<h2 class="h3 rounded-2">{{ section.h2 }}</h2>
                 <ul  class="navbar-nav gap-2">
                     <li class="nav-item fw-medium" v-for="link in section.links" :key="link.id">
                         <LinkComponent :type="link.name" :url="link.url" :is-view="link.isView" :class-name="link.className"/>
@@ -95,10 +95,12 @@ const footerNav = [
 <style scoped lang="scss">
 @import "../assets/styles.scss";
 footer{
-    background: linear-gradient(180deg, $secondary 49%, $primary 100%);
+    background: linear-gradient(180deg, rgba(var(--bs-secondary-rgb),0.8) 49%, rgba(var(--bs-primary-rgb),0.9) 100%);
     h2{
         color: var(--bs-bg)!important;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        padding: 0.2rem 0.5rem;
     }
     .nav-link{
         font-size: 1.2rem;

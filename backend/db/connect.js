@@ -1,4 +1,6 @@
-const sqlite3 = require("sqlite3").verbose();
+import sqlite3 from "sqlite3"
+
+sqlite3.verbose();
 
 const db = new sqlite3.Database("db/database.db", (error) => {
 	if (error) {
@@ -6,4 +8,4 @@ const db = new sqlite3.Database("db/database.db", (error) => {
 	}
 });
 
-module.exports = db;
+export default db;

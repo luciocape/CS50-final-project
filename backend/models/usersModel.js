@@ -1,4 +1,4 @@
-const db = require("../db/connect");
+import db from "../db/connect.js";
 
 const usersModel = {
 	createUsersTable: () => {
@@ -82,16 +82,17 @@ const usersModel = {
 		});
 	},
 	getUserByName: (name) => {
-		return new Promise((resolve, reject) => {
+		// return new Promise((resolve, reject) => {
 			const query = `Select * FROM users WHERE name = ?`;
 			db.all(query, name, (error, rows) => {
 				if (error) {
-					reject(error);
+					console.log(error)
+					throw new Error("Error while getting user by name:", error);
 				} else {
-					resolve(rows);
+					return rows;
 				}
 			});
-		});
+		// });
 	},
 	// updateUser
 };
@@ -100,4 +101,4 @@ usersModel.createUsersTable();
 usersModel.createBoughtTable();
 usersModel.createSavedTable();
 
-module.exports = usersModel;
+export default usersModel;
