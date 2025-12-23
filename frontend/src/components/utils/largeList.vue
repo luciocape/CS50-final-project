@@ -7,7 +7,7 @@
 			class="d-flex justify-content-center align-items-center number-of-items position-absolute rounded-circle p-2"
 			>{{ items.length }}</span
 		>
-		<div class="items w-100 bg-body rounded-3 ms-3 overflow-hidden">
+		<div class="items w-100 bg-body rounded-3 overflow-hidden">
 			<ul
 				class="border border-2 border-info list-group d-flex flex-column m-0 bg-body rounded-3"
 			>

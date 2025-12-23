@@ -28,11 +28,11 @@
 	/>
 	<div
 		v-else-if="props.inputType === 'addItem'"
-		class="add-item fw-medium d-flex align-items-center gap-1 text-secondary"
+		class="add-item fw-medium d-flex align-items-center justify-content-start gap-2 gap-sm-3 gap-md-4 text-secondary"
 	>
 		<div
 			v-if="!addingItem"
-			class="add-item-button d-flex align-items-center justify-content-start"
+			class="add-item-button d-flex align-items-center"
 		>
 			<IconPlus
 				size="20px"
@@ -133,16 +133,12 @@ textarea {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .add-item {
-	width: 100%;
 	.item-input {
 		min-width: 115px;
-		width: 30%;
 	}
 	.add-item-button {
 		height: 42px;
-		min-width: 115px;
-		width: 30%;
-		max-width: fit-content;
+		max-width: max-content;
 		.plus {
 			cursor: pointer;
 		}

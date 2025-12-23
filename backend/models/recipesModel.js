@@ -4,7 +4,7 @@ const recipesModel = {
 	createRecipesTable: () => {
 		const query = `
         CREATE TABLE IF NOT EXISTS recipes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id TEXT PRIMARY KEY,
         creator_name TEXT NOT NULL,
         title TEXT NOT NULL,
         stars FLOAT DEFAULT 0.0,
@@ -25,10 +25,11 @@ const recipesModel = {
 	createStepsTable: () => {
 		const creation = `
         CREATE TABLE IF NOT EXISTS recipe_steps (
-        id INTEGER PRIMARY KEY,
+        id TEXT PRIMARY KEY,
 		description TEXT NOT NULL,
 		photo BLOB,
-		recipe_id INTEGER FOREING KEY
+		recipe_id TEXT NOT NULL,
+		FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
         );`;
 		db.run(creation, (error) => {
 			if (error) {
@@ -78,4 +79,4 @@ const recipesModel = {
 	},
 };
 
-module.exports = recipesModel;
+export default recipesModel;

@@ -4,7 +4,7 @@ const usersModel = {
 	createUsersTable: () => {
 		const creation = `
         CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id TEXT PRIMARY KEY,
         name TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
         profile_picture BLOB,
@@ -20,8 +20,12 @@ const usersModel = {
 	createSavedTable: () => {
 		const creation = `
         CREATE TABLE IF NOT EXISTS saved_recipes (
-        user_id INTEGER FOREING KEY,
-		recipe_id INTEGER FOREING KEY
+            user_id TEXT NOT NULL,
+			recipe_id TEXT NOT NULL,
+			fecha_guardado DATETIME DEFAULT CURRENT_TIMESTAMP,
+			PRIMARY KEY (user_id, recipe_id),
+			FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+			FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
         )`;
 		db.run(creation, (error) => {
 			if (error) {
@@ -35,8 +39,12 @@ const usersModel = {
 	createBoughtTable: () => {
 		const creation = `
         CREATE TABLE IF NOT EXISTS bought_recipes (
-        user_id INTEGER FOREING KEY,
-		recipe_id INTEGER FOREING KEY
+			user_id TEXT NOT NULL,
+			recipe_id TEXT NOT NULL,
+			fecha_guardado DATETIME DEFAULT CURRENT_TIMESTAMP,
+			PRIMARY KEY (user_id, recipe_id),
+			FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+			FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
         )`;
 		db.run(creation, (error) => {
 			if (error) {
@@ -55,9 +63,9 @@ const usersModel = {
 	// 		}
 	// 	})
 	// },
-	createUser: (name, password) => {
-		const insertion = `INSERT INTO users (name, password) VALUES (?, ?)`;
-		db.run(insertion, [name, password], function (error) {
+	createUser: (id, name, password) => {
+		const insertion = `INSERT INTO users (id, name, password) VALUES (?, ?, ?)`;
+		db.run(insertion, [id, name, password], function (error) {
 			if (error) {
 				console.error("Error while adding user:", error.message);
 			}
@@ -83,15 +91,15 @@ const usersModel = {
 	},
 	getUserByName: (name) => {
 		// return new Promise((resolve, reject) => {
-			const query = `Select * FROM users WHERE name = ?`;
-			db.all(query, name, (error, rows) => {
-				if (error) {
-					console.log(error)
-					throw new Error("Error while getting user by name:", error);
-				} else {
-					return rows;
-				}
-			});
+		const query = `Select * FROM users WHERE name = ?`;
+		db.all(query, name, (error, rows) => {
+			if (error) {
+				console.log(error);
+				throw new Error("Error while getting user by name:", error);
+			} else {
+				return rows;
+			}
+		});
 		// });
 	},
 	// updateUser
