@@ -11,21 +11,21 @@
 					<IconStar color="#007C92" :filled="star - 1 < 4" />
 				</li>
 			</ul> -->
-			<Stars :shadowed="true" :stars="4" class="stars" />
-			<span class="fw-bold price pe-2 price">Price</span>
+			<Stars :shadowed="true" :stars="props.stars" class="stars" />
+			<span class="fw-bold price pe-2 price">{{ props.price }}</span>
 		</div>
 		<div class="card-body d-flex flex-column gap-2 pb-0">
 			<div>
-				<h4 class="card-title fw-bold h3">Title</h4>
-				<h5>creator</h5>
+				<h4 class="card-title fw-bold h3">{{ props.title }}</h4>
+				<h5>{{ props.creator }}</h5>
 			</div>
 
 			<div class="d-flex gap-2 justify-content-start">
 				<div
-					v-for="item in 2"
+					v-for="item in props.categories"
 					class="bg-secondary fw-medium rounded-pill text-primary px-2 py-1"
 				>
-					categoria
+					{{ item }}
 				</div>
 			</div>
 		</div>
@@ -71,8 +71,8 @@ const props = defineProps({
 .receta {
 	width: 28%;
 	min-width: 240px !important;
-	box-shadow: 2px 4px 4px -1px rgba(0, 0, 0, 0.25),
-		-2px -2px 10px -4px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 5px 12px -2px rgba(0, 0, 0, 0.22),
+		0px -5px 12px -8px rgba(0, 0, 0, 0.25);
 
 	h4,
 	h5 {

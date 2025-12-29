@@ -1,13 +1,13 @@
 import express from "express";
 const router = express.Router();
-import { register } from "../controllers/authControllers.js";
+import { register, login } from "../controllers/authControllers.js";
 
-router.post("/register", (req, res) => {
-	register(req, res);
+router.post("/register", async (req, res) => {
+	await register(req, res);
 });
 
-// router.get("/login", (req, res) => {
-// 	login(req, res);
-// });
+router.post("/login", async (req, res) => {
+	await login(req, res);
+});
 
 export default router;

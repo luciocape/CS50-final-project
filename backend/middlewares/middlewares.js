@@ -1,19 +1,20 @@
 //Middlewares
 export class ValidateUserInput {
-	static username(username) {
+	static usernameLength(username) {
 		if (typeof username != "string")
-			throw new Error("username must be a string")
+			throw new Error("username must be a string");
 		if (username.length < 3)
-			throw new Error("username must be at least 3 characters long")
+			throw new Error("username must be at least 3 characters long");
 	}
-	static password(password) {
-        if (typeof password != "string")
-			throw new Error("password must be a string")
-        if (password.length < 6)
-			throw new Error("password must be at least 6 characters long")
-    }
+	static passwordLength(password) {
+		console.log("entre");
+		if (typeof password != "string")
+			throw new Error("password must be a string");
+		if (password.length < 6)
+			throw new Error("password must be at least 6 characters long");
+	}
 	static passwordConfirmMatch(password, passwordConfirm) {
 		if (password !== passwordConfirm)
-			throw new Error("passwords do not match")
+			throw new Error("passwords do not match");
 	}
 }

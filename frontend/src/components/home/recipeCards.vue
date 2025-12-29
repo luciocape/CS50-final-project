@@ -3,7 +3,11 @@
 		<RecipeCard
 			v-for="card in cards"
 			:key="card.id"
-			title="cdcdcscsfvfdvs"
+			:title="card.title"
+			:price="card.price"
+			:creator="card.creator"
+			:categories="card.categories"
+			:stars="card.stars"
 		/>
 	</section>
 </template>
@@ -20,8 +24,8 @@ name: "recipeCards";
 
 const cards = [
 	{
-		title: "Pan",
-		price: "Free",
+		title: "Empanadas",
+		price: "200 ARS",
 		creator: "Lucio",
 		categories: ["Argentina", "Salty"],
 		stars: 4,

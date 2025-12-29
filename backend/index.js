@@ -3,7 +3,7 @@ import cors from "cors";
 
 import { PORT } from "./config.js";
 import db from "./db/connect.js";
-import "./helpers/createTables.js"
+import "./helpers/createTables.js";
 
 // import recipeRoutes from "./routes/recipes"
 import authRoutes from "./routes/auth.js";

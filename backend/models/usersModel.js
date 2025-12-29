@@ -89,18 +89,18 @@ const usersModel = {
 			}
 		});
 	},
-	getUserByName: (name) => {
-		// return new Promise((resolve, reject) => {
-		const query = `Select * FROM users WHERE name = ?`;
-		db.all(query, name, (error, rows) => {
+	getUserByName: async (name) => {
+		return new Promise((resolve, reject) => {
+		console.log("name:",name)
+		// const query = `Select * FROM users WHERE name = ?`;
+		db.all("Select * FROM users WHERE name = ?", [name], (error, rows) => {
 			if (error) {
-				console.log(error);
-				throw new Error("Error while getting user by name:", error);
+				reject("Server error while getting user by name")
 			} else {
-				return rows;
+				resolve([undefined, rows[0]]);
 			}
 		});
-		// });
+		});
 	},
 	// updateUser
 };

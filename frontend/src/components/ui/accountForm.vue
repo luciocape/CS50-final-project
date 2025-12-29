@@ -1,6 +1,6 @@
 <template>
 	<form
-		@submit="register($event)"
+		@submit="handleFormSubmit($event)"
 		class="contenedor-login p-4 pb-5 rounded-4 m-0 m-auto border border-2 border-primary"
 	>
 		<h1 class="mb-3 text-center">{{ form_title }}</h1>
@@ -36,6 +36,30 @@ const props = defineProps({
 	},
 });
 //const emits = defineEmits([]);
+const handleFormSubmit = async (e) => {
+	if (props.form_title.toLowerCase() === "login") {
+		await login(e);
+	} else if (props.form_title.toLowerCase() === "register") {
+		await register(e);
+	}
+};
+const login = async (e) => {
+	e.preventDefault();
+	const formData = new FormData(e.target);
+	const data = JSON.stringify(Object.fromEntries(formData.entries()));
+	// console.log(data);
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/auth/login`,
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: data,
+		}
+	);
+	console.log(await response.json());
+};
 const register = async (e) => {
 	e.preventDefault();
 	const formData = new FormData(e.target);
