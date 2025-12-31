@@ -58,6 +58,7 @@ const login = async (e) => {
 			body: data,
 		}
 	);
+	localStorage.setItem("user", response)
 	console.log(await response.json());
 };
 const register = async (e) => {

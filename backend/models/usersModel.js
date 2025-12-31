@@ -7,7 +7,7 @@ const usersModel = {
         id TEXT PRIMARY KEY,
         name TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
-        profile_picture BLOB,
+        profile_picture_name TEXT,
         points INTEGER DEFAULT 10000,
         stars FLOAT DEFAULT 0.0
         )`;

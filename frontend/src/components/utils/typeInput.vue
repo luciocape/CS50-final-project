@@ -1,11 +1,23 @@
 <template>
 	<input
 		v-if="
-			props.inputType !== 'textarea' &&
-			props.inputType !== 'submit' &&
-			props.inputType !== 'addItem'
+			!['textarea', 'submit', 'addItem', 'select', 'file'].includes(
+				props.inputType
+			)
 		"
+		:required="props.inputRequired"
 		:type="props.inputType"
+		:name="props.name"
+		:id="props.name"
+		:placeholder="props.placeholder"
+		class="no-submit border-2 form-control mb-1 rounded-4 m-auto bg-body bg-opacity-50"
+		:class="inputType + ' ' + inputClass"
+	/>
+	<input
+		v-else-if="props.inputType === 'file'"
+		:required="props.inputRequired"
+		type="file"
+		accept=".jpg, .png, .webp"
 		:name="props.name"
 		:id="props.name"
 		:placeholder="props.placeholder"
@@ -14,10 +26,11 @@
 	/>
 	<textarea
 		v-else-if="props.inputType === 'textarea'"
-		name=""
-		id=""
+		:required="props.inputRequired"
+		:name="props.name"
+		:id="props.name"
 		:placeholder="props.placeholder"
-		class="form-control border-3 rounded-4 border-primary"
+		class="form-control rounded-4 border-2 bg-body bg-opacity-50"
 	></textarea>
 	<input
 		v-else-if="props.inputType === 'submit'"
@@ -26,6 +39,17 @@
 		:value="props.value"
 		:class="inputClass"
 	/>
+	<select
+		v-else-if="props.inputType === 'select'"
+		:required="props.inputRequired"
+		:name="props.name"
+		:id="props.name"
+		class="px-2 overflow-x-hidden w-100 border-2 fw-medium form-select mb-1 rounded-4 bg-body bg-opacity-50"
+	>
+		<option v-for="option in props.options" :value="option" class="">
+			{{ option }}
+		</option>
+	</select>
 	<div
 		v-else-if="props.inputType === 'addItem'"
 		class="add-item fw-medium d-flex align-items-center justify-content-start gap-2 gap-sm-3 gap-md-4 text-secondary"
@@ -45,7 +69,7 @@
 		<TypeInput class="item-input" v-else />
 		<LargeList
 			:trash-allowed="true"
-			:items="items"
+			:items="ingredients"
 			@delete-item="deleteItem"
 		/>
 	</div>
@@ -54,7 +78,7 @@
 <script setup>
 import IconPlus from "../icons/iconPlus.vue";
 
-import { ref } from "vue";
+import { inject, ref } from "vue";
 import IconTrash from "../icons/iconTrash.vue";
 import LargeList from "./largeList.vue";
 
@@ -63,6 +87,10 @@ const props = defineProps({
 	inputType: {
 		type: String,
 		default: "text",
+	},
+	options: {
+		type: Array,
+		default: [],
 	},
 	inputClass: {
 		type: String,
@@ -78,9 +106,13 @@ const props = defineProps({
 	value: {
 		type: String,
 	},
+	inputRequired:{
+		type: Boolean,
+	}
 });
 //const emits = defineEmits([]);
-const items = ref([]);
+
+const ingredients = inject("ingredients");
 const addingItem = ref(false);
 const handNewItem = () => {
 	addingItem.value = true;
@@ -91,7 +123,7 @@ const handNewItem = () => {
 				e.preventDefault();
 				const newItem = itemInput.value.trim();
 				if (newItem) {
-					items.value.push(newItem);
+					ingredients.value.push(newItem);
 				}
 				addingItem.value = false;
 			}
@@ -99,7 +131,7 @@ const handNewItem = () => {
 	}, 100);
 };
 const deleteItem = (index) => {
-	items.value.splice(index, 1);
+	ingredients.value.splice(index, 1);
 };
 </script>
 
@@ -114,6 +146,7 @@ const deleteItem = (index) => {
 textarea {
 	backdrop-filter: blur(15px) !important;
 	min-width: 200px;
+	z-index: 100;
 }
 textarea {
 	min-height: 80px !important;
@@ -131,6 +164,11 @@ textarea {
 .submit {
 	color: var(--bs-bg) !important;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+select {
+	color: var(--bs-bg);
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .add-item {
 	.item-input {

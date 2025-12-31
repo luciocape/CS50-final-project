@@ -5,11 +5,12 @@ import { PORT } from "./config.js";
 import db from "./db/connect.js";
 import "./helpers/createTables.js";
 
-// import recipeRoutes from "./routes/recipes"
+import recipeRoutes from "./routes/recipes.js";
 import authRoutes from "./routes/auth.js";
 // import userRoutes from "./routes/users"
 
 console.log("Iniciando");
+
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -22,13 +23,16 @@ app.use(
 		credentials: true,
 	})
 );
+
+app.use(express.static('uploads'));
+
 app.get("/api", (req, res) => {
 	res.send("Hello, world!");
 });
 
 // app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
-// app.use("/api/recipes", recipeRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 // db.close((error) => {
 // 	if (error) {
@@ -38,12 +42,12 @@ app.use("/api/auth", authRoutes);
 
 //Done with AI
 const server = app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
+	console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
-process.on('SIGTERM', () => {
-    db.close((error) => {
-        if (error) console.error("Error closing db:", error);
-        server.close();
-    });
+process.on("SIGTERM", () => {
+	db.close((error) => {
+		if (error) console.error("Error closing db:", error);
+		server.close();
+	});
 });

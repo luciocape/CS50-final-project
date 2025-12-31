@@ -5,16 +5,18 @@ const recipesModel = {
 		const query = `
         CREATE TABLE IF NOT EXISTS recipes (
         id TEXT PRIMARY KEY,
-        creator_name TEXT NOT NULL,
+		user_id TEXT NOT NULL,
         title TEXT NOT NULL,
         stars FLOAT DEFAULT 0.0,
-        photo BLOB,
+        photo_cover_name TEXT NOT NULL,
         ingredients TEXT NOT NULL,
-        price INTEGER
+        price INTEGER,
         prep_time INTEGER DEFAULT 10000,
         country TEXT,
-        flavours TEXT,
-        comments TEXT
+        flavor TEXT,
+        comments TEXT,
+		FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        );
         )`;
 		db.run(query, (error) => {
 			if (error) {
@@ -26,8 +28,10 @@ const recipesModel = {
 		const creation = `
         CREATE TABLE IF NOT EXISTS recipe_steps (
         id TEXT PRIMARY KEY,
+		step_number NUMBER NOT NULL,
+		title TEXT NOT NULL,
 		description TEXT NOT NULL,
-		photo BLOB,
+		photo_name,
 		recipe_id TEXT NOT NULL,
 		FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
         );`;
@@ -36,7 +40,7 @@ const recipesModel = {
 				console.error("Error while creating recipe_steps table", error);
 			}
 		});
-	}, 
+	},
 
 	// dropTable: () => {
 	// 	const dropTable = `DROP TABLE recipe_steps;`;
@@ -46,9 +50,9 @@ const recipesModel = {
 	// 		}
 	// 	})
 	// },
-	addRecipe: (name, password) => {
-		const insertion = `INSERT INTO recipes (name, password) VALUES (?, ?)`;
-		db.run(insertion, [name, password], function (error) {
+	addRecipe: (id, user_id, title, photo_cover_name, ingredients, price, prep_time, country, flavor) => {
+		const insertion = `INSERT INTO recipes (id, user_id, title, photo_cover_name, ingredients, price, prep_time, country, flavor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+		db.run(insertion, [id, user_id, title, photo_cover_name, ingredients, price, prep_time, country, flavor], function (error) {
 			if (error) {
 				console.error("Error while adding user:", error.message);
 			}

@@ -1,11 +1,11 @@
 <template>
 	<div
-		v-if="items.length >= 1"
+		v-if="props.items.length >= 1"
 		class="position-relative items-list-container"
 	>
 		<span
 			class="d-flex justify-content-center align-items-center number-of-items position-absolute rounded-circle p-2"
-			>{{ items.length }}</span
+			>{{ props.items.length }}</span
 		>
 		<div class="items w-100 bg-body rounded-3 overflow-hidden">
 			<ul
@@ -13,12 +13,12 @@
 			>
 				<li
 					class="list-group-item m-0 pt-1 w-100 d-flex"
-					v-for="item in items"
+					v-for="item in props.items"
 				>
 					<span class="text w-75 overflow-x-hidden">{{ item }}</span
 					><IconTrash
 						v-if="trashAllowed"
-						@click="$emit( 'deleteItem', items.indexOf(item))"
+						@click="$emit('deleteItem', props.items.indexOf(item))"
 						size="25px"
 						color="rgb(0, 124, 146)"
 						class="icon-trash"
@@ -73,7 +73,9 @@ const props = defineProps({
 			width: calc(100% + 17px);
 			max-height: 250px;
 			overflow-y: scroll;
+
 			li {
+				z-index: 180;
 				.text {
 					display: inline-block;
 				}

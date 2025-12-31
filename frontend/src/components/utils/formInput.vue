@@ -2,7 +2,7 @@
     <div class="w-100 d-flex flex-column gap-2" :class="`text-${props.labelAlign}`">
         <label v-if="props.inputType != 'submit'" :for="props.name" class="fw-medium lead">{{ props.label }}</label>
         <div class="d-flex position-relative">
-            <TypeInput :name="props.name" :input-type="showPassword ? 'text' : props.inputType" :value="props.value" :input-class="inputClass" :placeholder="props.placeholder"/>
+            <TypeInput :inputRequired="inputRequired" :name="props.name" :input-type="showPassword ? 'text' : props.inputType" :options="props.options" :value="props.value" :input-class="inputClass" :placeholder="props.placeholder"/>
             <IconEye v-if="props.inputType === 'password' && showPassword" @click="showPassword = !showPassword" class="eye-icon position-absolute end-0 align-self-center mb-1 me-3" size="20px" />
             <IconEyeClosed v-else-if="props.inputType === 'password'" @click="showPassword = !showPassword" class="eye-icon position-absolute end-0 align-self-center mb-1 me-3" size="20px" />
         </div>
@@ -31,6 +31,9 @@ const props = defineProps({
     inputType: {
         type: String
     },
+    options: {
+        type: Array,
+    },
     labelAlign:{
         type: String,
         default: 'center'
@@ -41,6 +44,10 @@ const props = defineProps({
     },
     value: {
         type: String
+    },
+    inputRequired: {
+        type: Boolean,
+        default: true
     }
 });
 //const emits = defineEmits([]);

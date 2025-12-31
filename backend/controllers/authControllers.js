@@ -4,7 +4,7 @@ import crypto from "crypto";
 // import jwt from "jsonwebtoken";
 
 import { SALT_ROUNDS } from "../config.js";
-import { ValidateUserInput } from "../middlewares/middlewares.js";
+import { ValidateUserInput } from "../middlewares/validations.js";
 
 export async function register(req, res) {
 	const { username, password, passwordConfirm } = req.body;
